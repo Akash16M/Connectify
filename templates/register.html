@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Create account · Connectify{% endblock %}
+{% block body %}
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="brand-mark">✦</div><h1>Join Connectify</h1>
+    <p class="muted">Create your account and start a conversation.</p>
+    <form method="post">
+      <label>Username</label><input name="username" required minlength="3" maxlength="40" placeholder="Choose a username">
+      <label>Email</label><input type="email" name="email" required placeholder="you@example.com">
+      <label>Password</label><input type="password" name="password" required minlength="8" placeholder="At least 8 characters">
+      <button class="primary full">Create account</button>
+    </form>
+    <p class="auth-foot">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </div>
+</div>
+{% endblock %}

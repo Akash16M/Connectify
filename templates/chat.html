@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Connectify · Chats{% endblock %}
+{% block head %}<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>{% endblock %}
+{% block body %}
+<div class="app-shell" id="app" data-user-id="{{ user_id }}" data-username="{{ username }}">
+  <aside class="sidebar">
+    <header class="side-header">
+      <div class="brand"><span class="brand-mark small">✦</span><span>Connectify</span></div>
+      <div class="header-actions"><button id="newGroupBtn" class="icon-btn" title="Create group">＋</button><a class="icon-btn" href="{{ url_for('logout') }}" title="Log out">↪</a></div>
+    </header>
+    <div class="profile-strip"><div class="avatar me">{{ username[:1]|upper }}</div><div><strong>{{ username }}</strong><small>My account</small></div><span class="online-dot"></span></div>
+    <div class="search-wrap"><span>⌕</span><input id="searchInput" placeholder="Search chats or people"></div>
+    <div class="list-heading">CONVERSATIONS</div>
+    <div id="conversationList" class="conversation-list"><div class="empty-list">Loading chats…</div></div>
+    <div class="list-heading people-heading">PEOPLE</div>
+    <div id="peopleList" class="people-list"></div>
+  </aside>
+  <main class="chat-panel">
+    <section id="welcome" class="welcome">
+      <div class="welcome-icon">✦</div><h2>Your space to connect.</h2>
+      <p>Choose a conversation or start chatting with someone new.</p>
+      <span class="secure-note">● Your conversations, one place.</span>
+    </section>
+    <section id="activeChat" class="active-chat hidden">
+      <header class="chat-header">
+        <div class="avatar" id="chatAvatar">C</div>
+        <div class="chat-person"><strong id="chatTitle">Conversation</strong><small id="chatStatus">Connectify chat</small></div>
+        <div class="chat-header-right"><span class="header-pill">● CONNECTED</span></div>
+      </header>
+      <div id="messages" class="messages"></div>
+      <div id="typingLine" class="typing-line"></div>
+      <form id="messageForm" class="composer">
+        <label class="attach-btn" title="Attach a file">＋<input id="fileInput" type="file" hidden></label>
+        <input id="messageInput" autocomplete="off" placeholder="Write a message…" maxlength="4000">
+        <button class="send-btn" type="submit" aria-label="Send message">➤</button>
+      </form>
+      <div class="composer-hint">Enter to send · Share a kind message ✨</div>
+    </section>
+  </main>
+</div>
+<div id="groupModal" class="modal hidden">
+  <div class="modal-card">
+    <button id="closeModal" class="modal-close">×</button><h2>Create a group</h2>
+    <p class="muted">Give your group a name and choose members.</p>
+    <input id="groupTitle" placeholder="Group name">
+    <div id="groupMembers" class="member-picker"></div>
+    <button id="createGroup" class="primary full">Create group</button>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
