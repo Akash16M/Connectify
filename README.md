@@ -1,59 +1,162 @@
-# Connectify – Real-Time Chat Website
+# 💬 Connectify – Real-Time Chat Website
 
-A WhatsApp-inspired messaging website built with Python, Flask, Flask-SocketIO, MySQL, HTML, CSS and JavaScript.
+**Connectify** is a WhatsApp-inspired real-time messaging web application built using Python, Flask, Flask-SocketIO, and MySQL. It allows users to communicate through private and group conversations with an interactive and responsive interface.
 
-## Features in this starter version
-- User registration and login with hashed passwords
-- One-to-one conversations
-- Group conversations
-- Real-time messages using Socket.IO
-- Message history stored in MySQL
-- Online/offline presence indicator
-- Typing indicator
-- Image and document attachments
-- Responsive chat interface
+## 🚀 Features
 
-## Requirements
-- Python 3.10 or newer
-- MySQL Server running locally
-- MySQL port: **3307** (change in `.env` if yours is different)
+- 🔐 **User Authentication** – Secure user registration and login with password hashing.
+- 💬 **Private Chat** – One-to-one real-time messaging.
+- 👥 **Group Chat** – Communicate with multiple users in group conversations.
+- ⚡ **Real-Time Messaging** – Send and receive messages instantly using Socket.IO.
+- 🟢 **Online/Offline Status** – View user availability.
+- ✍️ **Typing Indicator** – Know when another user is typing.
+- 🕘 **Message History** – Store and retrieve conversations using MySQL.
+- 📎 **File Sharing** – Share images and documents.
+- 📱 **Responsive Design** – User-friendly interface for different screen sizes.
 
-## Setup on Windows
-1. Extract the ZIP file.
-2. Open the extracted `connectify` folder.
-3. Make sure your MySQL server is running on port 3307.
-4. Create the database once in MySQL:
+## 🛠️ Technologies Used
 
-   ```sql
-   CREATE DATABASE connectify CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-   ```
+| Category | Technology |
+|---|---|
+| Backend | Python, Flask |
+| Real-Time Communication | Flask-SocketIO |
+| Frontend | HTML, CSS, JavaScript |
+| Database | MySQL |
+| Authentication | Flask Sessions, Password Hashing |
 
-5. Copy `.env.example` and rename the copy to `.env`.
-6. Open `.env` and enter your MySQL password:
+## 📂 Project Structure
 
-   ```env
-   SECRET_KEY=make-this-a-long-random-value
-   DB_HOST=127.0.0.1
-   DB_PORT=3307
-   DB_USER=root
-   DB_PASSWORD=YOUR_MYSQL_PASSWORD
-   DB_NAME=connectify
-   ```
+```text
+Connectify/
+│
+├── app.py
+├── requirements.txt
+├── run_windows.bat
+├── .env.example
+├── .gitignore
+├── README.md
+│
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   └── chat.html
+│
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── chat.js
+    └── uploads/
+```
 
-7. Double-click `run_windows.bat`, or run these commands in Command Prompt:
+## ⚙️ Installation & Setup
 
-   ```bat
-   python -m venv .venv
-   .venv\Scripts\activate
-   pip install -r requirements.txt
-   python app.py
-   ```
+### 1. Clone the Repository
 
-8. Open **http://127.0.0.1:5000** in your browser.
-9. Register two accounts in separate browsers (or use an incognito window) to test live chat.
+```bash
+git clone https://github.com/Akash16M/Connectify.git
+```
 
-## Important
-- The app creates its tables automatically when `python app.py` starts. Create the database first.
-- Keep `.env` private. Do not upload it to GitHub.
-- This is a learning/portfolio starter, not a production-secure messaging service. Before public deployment, add CSRF protection, rate limiting, secure HTTPS cookies, malware scanning for uploads, robust presence tracking across multiple workers, and production server configuration.
-- Files in `static/uploads` are served as static files in this starter version. Do not upload sensitive documents.
+### 2. Navigate to the Project Folder
+
+```bash
+cd Connectify
+```
+
+### 3. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+### 4. Activate Virtual Environment
+
+```bash
+.venv\Scripts\activate
+```
+
+### 5. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Configure MySQL Database
+
+Create a database in MySQL:
+
+```sql
+CREATE DATABASE connectify
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```
+
+### 7. Configure Environment Variables
+
+Copy `.env.example` and rename the copy to `.env`.
+
+Update your database credentials:
+
+```env
+SECRET_KEY=your_secret_key
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=connectify
+```
+
+**Note:** Update the database port and credentials according to your MySQL configuration. Never upload your `.env` file to GitHub.
+
+### 8. Run the Application
+
+```bash
+python app.py
+```
+
+Alternatively, Windows users can run `run_windows.bat`.
+
+### 9. Open in Browser
+
+```text
+http://127.0.0.1:5000
+```
+
+Register two different accounts using separate browsers or an incognito window to test real-time messaging.
+
+## 🗄️ Database
+
+Connectify uses MySQL to store:
+
+- User account information
+- Private and group conversations
+- Chat messages
+- Related messaging data
+
+The application automatically creates the required tables when it starts. Create the database before running the application.
+
+## 🔮 Future Improvements
+
+- [ ] Cloud deployment
+- [ ] User profile pictures
+- [ ] Message read receipts
+- [ ] Voice and video calling
+- [ ] Message deletion and editing
+- [ ] Improved file storage
+- [ ] Enhanced security and scalability
+
+## 👨‍💻 Developer
+
+**Akash**
+
+- GitHub: [@Akash16M](https://github.com/Akash16M)
+- Project: [Connectify Repository](https://github.com/Akash16M/Connectify)
+
+## 📄 License
+
+This project is developed for educational and portfolio purposes.
+
+---
+
+⭐ If you find this project interesting, consider giving it a star!
